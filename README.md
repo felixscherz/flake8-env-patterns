@@ -12,6 +12,11 @@ flake8 plugin which validates access to environment variables against allowed pa
 |--------|---------------------------------------------------------|
 | FEP001 | environment variable does not match any allowed pattern |
 
+## rationale
+
+flake8-env-patterns helps with enforcing a convention for environment variable names when building a python
+application.
+
 ## configuration
 
 This plugin expects a comma-separated list of regex patterns to validate environment variable access
