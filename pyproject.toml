@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flake8-env-patterns"
+version = "0.1.0"
+description = "flake8 plugin which checks environment variable access against allowed patterns"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.9"
+authors = [
+    { name = "Felix Scherz", email = "felixwscherz@gmail.com" },
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = [
+    "flake8>=3.8",
+    "importlib-metadata; python_version<\"3.10\"",
+]
+
+[project.entry-points."flake8.extension"]
+FPU = "flake8_env_patterns:Plugin"
+
+[project.urls]
+Homepage = "https://github.com/felixwscherz/flake8-env-patterns"
