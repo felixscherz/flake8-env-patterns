@@ -9,12 +9,12 @@ from flake8.options.manager import OptionManager
 from flake8.options.manager import argparse
 
 DEFAULT_ENV_VARIABLE_PATTERNS = [".*"]
-PROBLEM_MESSAGE = "FEP001 environment variable does not match any allowed pattern"
+PROBLEM_MESSAGE = "FEP001 environment variable {name} does not match any allowed pattern"
 
 
 class Visitor(ast.NodeVisitor):
     def __init__(self, patterns: list[str]) -> None:
-        self.problems: list[tuple[int, int]] = []
+        self.problems: list[tuple[int, int, str]] = []
         self.patterns = [re.compile(p) for p in patterns]
 
     def is_allowed(self, name: str) -> bool:
@@ -27,7 +27,7 @@ class Visitor(ast.NodeVisitor):
             and isinstance(node.slice, ast.Constant)
         ):
             if not self.is_allowed(node.slice.value):
-                self.problems.append((node.slice.lineno, node.slice.col_offset))
+                self.problems.append((node.slice.lineno, node.slice.col_offset, node.slice.value))
 
         self.generic_visit(node)
 
@@ -40,12 +40,12 @@ class Visitor(ast.NodeVisitor):
         ):
             if isinstance(node.args[0], ast.Constant):
                 if not self.is_allowed(node.args[0].value):
-                    self.problems.append((node.args[0].lineno, node.args[0].col_offset))
+                    self.problems.append((node.args[0].lineno, node.args[0].col_offset, node.args[0].value))
             ...
         if isinstance(node.func, ast.Attribute) and node.func.attr == "getenv":
             if isinstance(node.args[0], ast.Constant):
                 if not self.is_allowed(node.args[0].value):
-                    self.problems.append((node.args[0].lineno, node.args[0].col_offset))
+                    self.problems.append((node.args[0].lineno, node.args[0].col_offset, node.args[0].value))
 
         self.generic_visit(node)
 
@@ -76,5 +76,5 @@ class Plugin:
     def run(self) -> Generator[tuple[int, int, str, Type[Any]], None, None]:
         visitor = Visitor(patterns=self.patterns)
         visitor.visit(self._tree)
-        for line, col in visitor.problems:
-            yield line, col, PROBLEM_MESSAGE, type(self)
+        for line, col, name in visitor.problems:
+            yield line, col, PROBLEM_MESSAGE.format(name=name), type(self)

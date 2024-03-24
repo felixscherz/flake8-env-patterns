@@ -18,19 +18,19 @@ def test_trivial_case():
 
 def test_forbid_env_variables_via_subscript():
     code = """os.environ["S3_SOMETHING"]"""
-    expected = {"1:11 FEP001 environment variable does not match any allowed pattern"}
+    expected = {"1:11 FEP001 environment variable S3_SOMETHING does not match any allowed pattern"}
     assert _results(code, ["AWS_.*"]) == expected
 
 
 def test_forbid_env_variables_via_get():
     code = """os.environ.get("S3_SOMETHING")"""
-    expected = {"1:15 FEP001 environment variable does not match any allowed pattern"}
+    expected = {"1:15 FEP001 environment variable S3_SOMETHING does not match any allowed pattern"}
     assert _results(code, ["AWS_.*"]) == expected
 
 
 def test_forbid_env_variables_via_getenv():
     code = """os.getenv("S3_SOMETHING")"""
-    expected = {"1:10 FEP001 environment variable does not match any allowed pattern"}
+    expected = {"1:10 FEP001 environment variable S3_SOMETHING does not match any allowed pattern"}
     assert _results(code, ["AWS_.*"]) == expected
 
 
