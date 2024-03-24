@@ -34,7 +34,7 @@ jobs:
       - name: build sdist
         run: python -m build
       - name: Upload sdist
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: wheels
           path: dist
