@@ -27,4 +27,5 @@ dependencies = [
 FPU = "flake8_env_patterns:Plugin"
 
 [project.urls]
-Homepage = "https://github.com/felixwscherz/flake8-env-patterns"
+issues = "https://github.com/felixwscherz/flake8-env-patterns/issues"
+repository = "https://github.com/felixscherz/flake8-env-patterns"
