@@ -38,5 +38,5 @@ Sample `.pre-commit-config.yaml`:
   rev: 7.0.0
   hooks:
     - id: flake8
-      additional_dependencies: [flake8-env-patterns==0.1.0]
+      additional_dependencies: [flake8-env-patterns==0.2.0]
 ```
