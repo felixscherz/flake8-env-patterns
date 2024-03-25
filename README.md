@@ -39,4 +39,7 @@ Sample `.pre-commit-config.yaml`:
   hooks:
     - id: flake8
       additional_dependencies: [flake8-env-patterns==0.2.0]
+      args:
+        - --env-variable-patterns
+        - AWS_.*,MYAPP_.*
 ```
