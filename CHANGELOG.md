@@ -2,6 +2,11 @@
 
 <!-- towncrier release notes start -->
 
+# flake8-env-patterns 0.2.2 (2024-03-30)
+
+No significant changes.
+
+
 # flake8-env-patterns 0.2.1 (2024-03-30)
 
 ### Improved Documentation
