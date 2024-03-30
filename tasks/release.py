@@ -33,7 +33,7 @@ def main(version_str: str) -> int:
         repo.heads.main.checkout()
         repo.delete_head(release_branch, force=True)
         upstream.fetch()
-        repo.git.reset("--hard", "upstream/main")
+        repo.git.reset("--hard", "origin/main")
     print("All done! ✨ 🍰 ✨")  # noqa: T201
     return 0
 
