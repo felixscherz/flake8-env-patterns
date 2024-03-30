@@ -29,3 +29,9 @@ FPU = "flake8_env_patterns:Plugin"
 [project.urls]
 issues = "https://github.com/felixwscherz/flake8-env-patterns/issues"
 repository = "https://github.com/felixscherz/flake8-env-patterns"
+
+[tool.towncrier]
+name = "flake8-env-patterns"
+package = "flake8_env_patterns"
+directory = "changes"
+filename = "CHANGELOG.md"
