@@ -1,4 +1,13 @@
+
+
 <!-- towncrier release notes start -->
+
+# flake8-env-patterns 0.2.1 (2024-03-30)
+
+### Improved Documentation
+
+- Added towncrier
+
 
 ## v0.2.0 (2024-03-24)
 
