@@ -1,10 +1,13 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = [
+    "setuptools>=61.0",
+    "setuptools-scm>=8.0"
+]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "flake8-env-patterns"
-version = "0.2.1"
+dynamic = ["version"]
 description = "flake8 plugin which checks environment variable access against allowed patterns"
 readme = "README.md"
 license = {file = "LICENSE"}
@@ -35,3 +38,5 @@ name = "flake8-env-patterns"
 package = "flake8_env_patterns"
 directory = "changes"
 filename = "CHANGELOG.md"
+
+[tool.setuptools_scm]
